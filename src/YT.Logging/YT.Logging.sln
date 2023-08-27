@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YT.Logging.BasicLogging", "YT.Logging.BasicLogging\YT.Logging.BasicLogging.csproj", "{19E26A8A-AABC-4042-88B7-B87251CFD2DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YT.Logging.BasicLogging", "YT.Logging.BasicLogging\YT.Logging.BasicLogging.csproj", "{19E26A8A-AABC-4042-88B7-B87251CFD2DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YT.Logging.WebLogging", "YT.Logging.WebLogging\YT.Logging.WebLogging.csproj", "{E7A6B058-7627-4913-B853-FDAC9FE0FCD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YT.Logging.WebLogging.Advanced", "YT.Logging.WebLogging.Advanced\YT.Logging.WebLogging.Advanced.csproj", "{F18BCA0D-41C7-4CB7-9340-7B4FDE523783}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{19E26A8A-AABC-4042-88B7-B87251CFD2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19E26A8A-AABC-4042-88B7-B87251CFD2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19E26A8A-AABC-4042-88B7-B87251CFD2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A6B058-7627-4913-B853-FDAC9FE0FCD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A6B058-7627-4913-B853-FDAC9FE0FCD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A6B058-7627-4913-B853-FDAC9FE0FCD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A6B058-7627-4913-B853-FDAC9FE0FCD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F18BCA0D-41C7-4CB7-9340-7B4FDE523783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F18BCA0D-41C7-4CB7-9340-7B4FDE523783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F18BCA0D-41C7-4CB7-9340-7B4FDE523783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F18BCA0D-41C7-4CB7-9340-7B4FDE523783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

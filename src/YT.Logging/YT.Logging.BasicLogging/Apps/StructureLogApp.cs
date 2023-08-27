@@ -59,7 +59,7 @@ public class StructureLogApp
                 formatter: new JsonFormatter(),
                 path: logPath
             )
-            .WriteTo.Seq("http://localhost:5341")
+            .WriteTo.Seq("http://localhost:5341", restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug)
             .Enrich.WithEnvironmentName()
             .Enrich.WithEnvironmentUserName()
             .Enrich.WithProperty("App", "YT-App-001")
