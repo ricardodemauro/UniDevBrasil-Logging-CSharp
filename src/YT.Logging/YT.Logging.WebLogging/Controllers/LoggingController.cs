@@ -4,28 +4,30 @@ namespace YT.Logging.WebLogging.Controllers;
 
 public class LoggingController : Controller
 {
-    static class Events
+    readonly ILogger<LoggingController> _logger;
+
+    public LoggingController(ILogger<LoggingController> logger)
     {
-        internal static readonly EventId EventOne = new EventId(100, nameof(EventOne));
-        internal static readonly EventId EventTwo = new EventId(101, nameof(EventTwo));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     [HttpGet("~/logging")]
-    public IActionResult Index(
-        [FromServices] ILogger<LoggingController> logger)
+    public IActionResult Default()
     {
-        logger.LogInformation("1. Logging from {Action}", nameof(Index));
-        logger.LogWarning("2. Logging from {Action}", nameof(Index));
+        _logger.LogInformation("1. Logging from {RequestPath}", HttpContext.Request.Path);
+        _logger.LogWarning("2. Logging from {RequestPath}", HttpContext.Request.Path);
 
         return Ok(new { Message = "Hello World" });
     }
 
-    [HttpGet("~/logging/events")]
-    public IActionResult WithEvent(
-        [FromServices] ILogger<LoggingController> logger)
+    [HttpGet("~/logging/log-factory")]
+    public IActionResult LogFactory(
+        [FromServices] ILoggerFactory logFactory)
     {
-        logger.LogInformation(Events.EventOne, "1. Logging from {Action}", nameof(Index));
-        logger.LogWarning(Events.EventTwo, "2. Logging from {Action}", nameof(Index));
+        var logger = logFactory.CreateLogger<LoggingController>();
+
+        logger.LogInformation("1. Logging from {RequestPath}", HttpContext.Request.Path);
+        logger.LogWarning("2. Logging from {RequestPath}", HttpContext.Request.Path);
 
         return Ok(new { Message = "Hello World" });
     }

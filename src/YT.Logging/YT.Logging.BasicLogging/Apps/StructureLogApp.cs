@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using Serilog.Events;
 using Serilog.Formatting.Json;
 using System.Diagnostics;
 
@@ -50,21 +51,40 @@ public class StructureLogApp
     static void SetUpLogging()
     {
         var basePath = "C:/Users/ricardo/source/repos/YT-Logging-Video-1/src/YT.Logging/YT.Logging.BasicLogging/samples/";
-        var logPath = Path.Combine(basePath, "YT-logging-json.log");
+        var logPath = Path.Combine(basePath, "YT-333-logging-json.log");
 
         Serilog.Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
-            .WriteTo.Console()
+            .WriteTo.Console() // sink console
             .WriteTo.File(
                 formatter: new JsonFormatter(),
-                path: logPath
-            )
-            .WriteTo.Seq("http://localhost:5341", restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug)
-            .Enrich.WithEnvironmentName()
-            .Enrich.WithEnvironmentUserName()
-            .Enrich.WithProperty("App", "YT-App-001")
+                path: logPath,
+                restrictedToMinimumLevel: LogEventLevel.Information
+            ) // sink file
+            .WriteTo.Seq("http://localhost:5341") //sink seq
+            .Enrich.WithEnvironmentName() //enrich environment name
+            .Enrich.WithEnvironmentUserName() // enrich environment user name
             .CreateLogger();
     }
+
+    //static void SetUpLogging()
+    //{
+    //    var basePath = "C:/Users/ricardo/source/repos/YT-Logging-Video-1/src/YT.Logging/YT.Logging.BasicLogging/samples/";
+    //    var logPath = Path.Combine(basePath, "YT-logging-json.log");
+
+    //    Serilog.Log.Logger = new LoggerConfiguration()
+    //        .MinimumLevel.Debug()
+    //        .WriteTo.Console()
+    //        .WriteTo.File(
+    //            formatter: new JsonFormatter(),
+    //            path: logPath
+    //        )
+    //        .WriteTo.Seq("http://localhost:5341", restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug)
+    //        .Enrich.WithEnvironmentName()
+    //        .Enrich.WithEnvironmentUserName()
+    //        .Enrich.WithProperty("App", "YT-App-001")
+    //        .CreateLogger();
+    //}
 
     //static void SetUpLogging()
     //{
